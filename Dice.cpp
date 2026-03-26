@@ -3,7 +3,7 @@
 #include <ctime>
 #include <iostream>
 
-Dice::int getNumber() {
+int Dice::getNumber() {
 	srand(time(0));
 	number = rand() % 6 + 1;
 	return number;
