@@ -18,6 +18,10 @@ int Player::getMoney() {
 	return money;
 }
 
+void Player::setPosition(int p) {
+	position = p;
+}
+
 int Player::getPosition() {
 	return position;
 }

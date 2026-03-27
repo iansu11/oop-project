@@ -9,7 +9,7 @@ Map::Map() {
 	gameMap.push_back(Cell("Land4", CellType::Land, 500));
 }
 
-int getSize() {
+int Map::getSize() {
 	return gameMap.size();
 }
 

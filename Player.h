@@ -15,7 +15,10 @@ public:
 	Player(string n0, int m0);
 	string getName();
 	int getMoney();
+
+	void setPosition(int p);
 	int getPosition();
+
 	bool isprison();
 	bool isbankruptcy();
 
