@@ -16,11 +16,13 @@ set(SOURCE_FILES
     Player.h
     Dice.cpp
     Dice.h
+    Cell.cpp
+    Cell.h
 )
 
 # 5. 建立執行檔 (Executable)
 # 第一個參數是你想生成的程式名稱，後面是剛才定義的檔案清單
-add_executable(MonopolyGame ${SOURCE_FILES} "Dice.cpp" "cell.h")
+add_executable(MonopolyGame ${SOURCE_FILES} "Dice.cpp" "cell.h" "Map.cpp" "Map.h")
 
 # 6. (選用) 如果你的 .h 檔在不同資料夾，可以加入這行
 # target_include_directories(MonopolyGame PUBLIC ${CMAKE_CURRENT_SOURCE_SET})
