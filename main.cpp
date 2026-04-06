@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <iomanip>
+#include <string>
 #include <conio.h> // 用於 _getch() 函數
 #include <windows.h> // 使用 Sleep()
 #include "Player.h"
@@ -13,39 +14,82 @@ using namespace std;
 
 void drawMap(Map& myMap, Player p[], int playerCount) {
 	string combined;
+	string playerPlace[16] = {};
+
+	for (int i = 0;i < 16;i++) {
+		for (int j = 1;j <= playerCount;j++) {
+			if (p[j].getPosition() == i) {
+				playerPlace[i] += " P" + to_string(j);
+			}
+		}
+	}
 
 	for (int i = 0;i <= 4;i++) {
 		Cell& landedCell = myMap.getCell(i);
-		string combined = "[" + landedCell.getName() + "]";
-		cout << left << setw(11) << combined;
+
+		if (playerPlace[i] != "") 
+			combined = "[" + landedCell.getName() + "]" + playerPlace[i];
+		else 
+			combined = "[" + landedCell.getName() + "]";
+		
+		cout << left << setw(17) << combined;
 	}
 	cout << endl<<endl;
 
 	Cell& landedCell = myMap.getCell(15);
-	combined = "[" + landedCell.getName() + "]";
-	cout << left << setw(11) << combined;
+		if (playerPlace[15] != "")
+			combined = "[" + landedCell.getName() + "]" + playerPlace[15];
+		else
+			combined = "[" + landedCell.getName() + "]";
+		cout << left << setw(17) << combined;
+
 	landedCell = myMap.getCell(5);
-	combined = "[" + landedCell.getName() + "]";
-	cout<< setw(33) << " " << setw(11) << combined<<endl<<endl;
+		if (playerPlace[5] != "")
+			combined = "[" + landedCell.getName() + "]" + playerPlace[5];
+		else
+			combined = "[" + landedCell.getName() + "]";
+		cout<< setw(51) << " " << setw(17) << combined<<endl<<endl;
+
 
 	landedCell = myMap.getCell(14);
-	combined = "[" + landedCell.getName() + "]";
-	cout << left << setw(11) << combined;
+		if (playerPlace[14] != "")
+			combined = "[" + landedCell.getName() + "]" + playerPlace[14];
+		else
+			combined = "[" + landedCell.getName() + "]";
+		cout << left << setw(17) << combined;
+
+
 	landedCell = myMap.getCell(6);
-	combined = "[" + landedCell.getName() + "]";
-	cout << setw(33) << " " << setw(11) << combined << endl << endl;
+		if (playerPlace[6] != "")
+			combined = "[" + landedCell.getName() + "]" + playerPlace[6];
+		else
+			combined = "[" + landedCell.getName() + "]";
+		cout << setw(51) << " " << setw(17) << combined << endl << endl;
+
 
 	landedCell = myMap.getCell(13);
-	combined = "[" + landedCell.getName() + "]";
-	cout << left << setw(11) << combined;
+		if (playerPlace[13] != "")
+			combined = "[" + landedCell.getName() + "]" + playerPlace[13];
+		else
+			combined = "[" + landedCell.getName() + "]";
+		cout << left << setw(17) << combined;
+
 	landedCell = myMap.getCell(7);
-	combined = "[" + landedCell.getName() + "]";
-	cout << setw(33) <<" " << setw(11) << combined << endl << endl;
+		if (playerPlace[7] != "")
+			combined = "[" + landedCell.getName() + "]" + playerPlace[7];
+		else
+			combined = "[" + landedCell.getName() + "]";
+		cout << setw(51) <<" " << setw(17) << combined << endl << endl;
+
 
 	for (int i = 12;i >= 8;i--) {
 		Cell& landedCell = myMap.getCell(i);
-		combined = "[" + landedCell.getName() + "]";
-		cout << left << setw(11) << combined;
+		if (playerPlace[i] != "")
+			combined = "[" + landedCell.getName() + "]" + playerPlace[i];
+		else
+			combined = "[" + landedCell.getName() + "]";
+
+		cout << left << setw(17) << combined;
 	}
 	cout << endl << endl;
 
@@ -71,7 +115,7 @@ int main() {
 
 	for (int i = 1;i <= players;i++) {
 		string name;
-		cout << "請依序輸入"<<i<<"號玩家名稱: ";
+		cout << "請依序輸入"<<i<<"號玩家名稱(P"<<i<<"):";
 		cin >> name;
 		p[i].setName(name);
 	}
@@ -111,9 +155,7 @@ int main() {
 			}
 			
 			int steps = dice.getNumber();
-			cout << p[i].getName() << " 擲出了 " << steps << " 點。" << endl<<endl;
-
-			drawMap(myMap, p, players);
+			cout << p[i].getName() << " 擲出了 " << steps << " 點。" << endl;
 
 			if (p[i].getPosition() + steps > myMap.getSize()) {
 				p[i].addMoney(1000);
@@ -131,7 +173,9 @@ int main() {
 			Cell& landedCell = myMap.getCell(newPos);
 
 			// 步驟 E: 印出結果
-			cout << p[i].getName() << " 移動到了第 " << newPos << " 格: [" << landedCell.getName() << "]" << endl;
+			cout << p[i].getName() << " 移動到了第 " << newPos << " 格: [" << landedCell.getName() << "]" << endl<<endl;
+
+			drawMap(myMap, p, players);
 
 			// 簡單判斷一下踩到了什麼
 			if (landedCell.getType() == CellType::Start) {
@@ -140,7 +184,7 @@ int main() {
 			else if (landedCell.getType() == CellType::Land) {
 				char choice;
 				if (landedCell.getOwner() == -1) {
-					cout << " -> 這塊土地目前沒有人擁有，價格是: " << landedCell.getPrice() << " 元" << endl;
+					cout << "["<< landedCell.getName() << "] -> 這塊土地目前沒有人擁有，價格是: " << landedCell.getPrice() << " 元" << endl;
 					cout << "請問需要購買這塊土地嗎？(y/n): " << endl;
 					while (true) {
 						choice = _getch(); // 讀取按鍵
