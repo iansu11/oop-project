@@ -1,12 +1,22 @@
-#include "Map.h"
+﻿#include "Map.h"
 
 Map::Map() {
 	gameMap.push_back(Cell("Start", CellType::Start, 0,0));
-	gameMap.push_back(Cell("Land1", CellType::Land, 2000, 200));
-	gameMap.push_back(Cell("Land2", CellType::Land, 3000, 350));
+	gameMap.push_back(Cell("忠孝路", CellType::Land, 1000, 60));
+	gameMap.push_back(Cell("仁愛路", CellType::Land, 1000, 60));
+	gameMap.push_back(Cell("信義路", CellType::Land, 1200, 80));
 	gameMap.push_back(Cell("Jail", CellType::Jail, 0, 0));
-	gameMap.push_back(Cell("Land3", CellType::Land, 3500, 400));
-	gameMap.push_back(Cell("Land4", CellType::Land, 2500, 300));
+	gameMap.push_back(Cell("民族路", CellType::Land, 1400, 100));
+	gameMap.push_back(Cell("民權路", CellType::Land, 1400, 100));
+	gameMap.push_back(Cell("民生路", CellType::Land, 1600, 120));
+	gameMap.push_back(Cell("免費停車場", CellType::PublicLand, 0, 0));
+	gameMap.push_back(Cell("自由路", CellType::Land, 2200, 180));
+	gameMap.push_back(Cell("平等路", CellType::Land, 2200, 180));
+	gameMap.push_back(Cell("博愛路", CellType::Land, 2400, 200));
+	gameMap.push_back(Cell("台北車站", CellType::Land, 2000, 250));
+	gameMap.push_back(Cell("中華路", CellType::Land, 3000, 260));
+	gameMap.push_back(Cell("中正路", CellType::Land, 3000, 260));
+	gameMap.push_back(Cell("介壽路", CellType::Land, 3200, 280));
 }
 
 int Map::getSize() {

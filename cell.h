@@ -8,6 +8,7 @@ enum class CellType {
 	Land,
 	Chance,
 	Jail,
+	PublicLand,
 };
 
 class Cell {

@@ -62,7 +62,7 @@ int main() {
 			while (true) {
 				input = _getch(); // 讀取按鍵
 				if (input == 'd' || input == 'D') {
-					cout << " (骰子轉動中...)\n";
+					cout << " (骰子轉動中...)\n"<< endl;
 					Sleep(1000);
 					break;
 				}
@@ -70,6 +70,11 @@ int main() {
 			
 			int steps = dice.getNumber();
 			cout << p[i].getName() << " 擲出了 " << steps << " 點。" << endl;
+
+			if (p[i].getPosition() + steps > myMap.getSize()) {
+				p[i].addMoney(1000);
+				cout << " -> 新的一圈，獲得 1000 元！目前金額: " << p[i].getMoney() << " 元" << endl;
+			}
 
 			// 步驟 B: 計算新位置
 			int currentPos = p[i].getPosition();
@@ -86,9 +91,7 @@ int main() {
 
 			// 簡單判斷一下踩到了什麼
 			if (landedCell.getType() == CellType::Start) {
-				cout << " -> 踩到起點啦！" << endl;
-				p[i].addMoney(1000);
-				cout << " -> 獲得 1000 元！目前金額: " << p[i].getMoney() << " 元" << endl;
+				cout << " -> 踩到起點！休息一下" << endl;
 			}
 			else if (landedCell.getType() == CellType::Land) {
 				char choice;
@@ -116,7 +119,7 @@ int main() {
 					}
 				}
 				else if(landedCell.getOwner()!=i){
-					cout << "你踩到"<< landedCell.getOwner()<<"的土地了！需要支付過路費: " << landedCell.getToll() << " 元" << endl;
+					cout << "你踩到 "<< p[landedCell.getOwner()].getName()<<" 的土地了！需要支付過路費: " << landedCell.getToll() << " 元" << endl;
 					p[i].payMoney(landedCell.getToll());
 					p[landedCell.getOwner()].addMoney(landedCell.getToll());
 				}
@@ -125,6 +128,10 @@ int main() {
 			else if (landedCell.getType() == CellType::Jail) {
 				cout << " -> 踩到監獄了！" << endl;
 				p[i].setPrison(3);
+			}
+
+			else if (landedCell.getType() == CellType::PublicLand) {
+				cout << "-> " << landedCell.getName() << endl;
 			}
 
 			cout << "------------------" << endl;
