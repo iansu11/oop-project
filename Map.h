@@ -14,8 +14,8 @@ public:
 	int getSize();
 
 	Cell& getCell(int);
-
-
+	
+	void setOwner(int index, int player);
 };
 
 #endif

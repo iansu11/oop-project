@@ -14,15 +14,17 @@ class Cell {
 private:
 	string name;
 	CellType type;
-	int price, owner;
+	int price, owner,toll;
 public:
-	Cell(string n, CellType t, int p);
+	Cell();
+	Cell(string n, CellType t, int p, int to);
 	string getName();
 	CellType getType();
 	int getPrice();
+	int getToll();
 	int getOwner();
 
-	void setowner(int owner);
+	void setOwner(int );
 
 
 };
