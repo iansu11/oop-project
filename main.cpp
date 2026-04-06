@@ -2,6 +2,7 @@
 #include <vector>
 #include <cstdlib>
 #include <ctime>
+#include <iomanip>
 #include <conio.h> // 用於 _getch() 函數
 #include <windows.h> // 使用 Sleep()
 #include "Player.h"
@@ -9,6 +10,47 @@
 #include "Cell.h"
 #include "Map.h"
 using namespace std;
+
+void drawMap(Map& myMap, Player p[], int playerCount) {
+	string combined;
+
+	for (int i = 0;i <= 4;i++) {
+		Cell& landedCell = myMap.getCell(i);
+		string combined = "[" + landedCell.getName() + "]";
+		cout << left << setw(11) << combined;
+	}
+	cout << endl<<endl;
+
+	Cell& landedCell = myMap.getCell(15);
+	combined = "[" + landedCell.getName() + "]";
+	cout << left << setw(11) << combined;
+	landedCell = myMap.getCell(5);
+	combined = "[" + landedCell.getName() + "]";
+	cout<< setw(33) << " " << setw(11) << combined<<endl<<endl;
+
+	landedCell = myMap.getCell(14);
+	combined = "[" + landedCell.getName() + "]";
+	cout << left << setw(11) << combined;
+	landedCell = myMap.getCell(6);
+	combined = "[" + landedCell.getName() + "]";
+	cout << setw(33) << " " << setw(11) << combined << endl << endl;
+
+	landedCell = myMap.getCell(13);
+	combined = "[" + landedCell.getName() + "]";
+	cout << left << setw(11) << combined;
+	landedCell = myMap.getCell(7);
+	combined = "[" + landedCell.getName() + "]";
+	cout << setw(33) <<" " << setw(11) << combined << endl << endl;
+
+	for (int i = 12;i >= 8;i--) {
+		Cell& landedCell = myMap.getCell(i);
+		combined = "[" + landedCell.getName() + "]";
+		cout << left << setw(11) << combined;
+	}
+	cout << endl << endl;
+
+}
+
 
 int main() {
 	srand(time(0));
@@ -62,14 +104,16 @@ int main() {
 			while (true) {
 				input = _getch(); // 讀取按鍵
 				if (input == 'd' || input == 'D') {
-					cout << " (骰子轉動中...)\n"<< endl;
+					cout << " (骰子轉動中...)\n";
 					Sleep(1000);
 					break;
 				}
 			}
 			
 			int steps = dice.getNumber();
-			cout << p[i].getName() << " 擲出了 " << steps << " 點。" << endl;
+			cout << p[i].getName() << " 擲出了 " << steps << " 點。" << endl<<endl;
+
+			drawMap(myMap, p, players);
 
 			if (p[i].getPosition() + steps > myMap.getSize()) {
 				p[i].addMoney(1000);

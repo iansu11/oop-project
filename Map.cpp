@@ -1,11 +1,11 @@
 ﻿#include "Map.h"
 
 Map::Map() {
-	gameMap.push_back(Cell("Start", CellType::Start, 0,0));
+	gameMap.push_back(Cell("起點", CellType::Start, 0,0));
 	gameMap.push_back(Cell("忠孝路", CellType::Land, 1000, 60));
 	gameMap.push_back(Cell("仁愛路", CellType::Land, 1000, 60));
 	gameMap.push_back(Cell("信義路", CellType::Land, 1200, 80));
-	gameMap.push_back(Cell("Jail", CellType::Jail, 0, 0));
+	gameMap.push_back(Cell("監獄", CellType::Jail, 0, 0));
 	gameMap.push_back(Cell("民族路", CellType::Land, 1400, 100));
 	gameMap.push_back(Cell("民權路", CellType::Land, 1400, 100));
 	gameMap.push_back(Cell("民生路", CellType::Land, 1600, 120));
