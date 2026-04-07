@@ -10,91 +10,8 @@
 #include "Dice.h"
 #include "Cell.h"
 #include "Map.h"
+#include "UI.h"
 using namespace std;
-
-void drawMap(Map& myMap, Player p[], int playerCount) {
-	string combined;
-	string playerPlace[16] = {};
-
-	for (int i = 0;i < 16;i++) {
-		for (int j = 1;j <= playerCount;j++) {
-			if (p[j].getPosition() == i) {
-				playerPlace[i] += " P" + to_string(j);
-			}
-		}
-	}
-
-	for (int i = 0;i <= 4;i++) {
-		Cell& landedCell = myMap.getCell(i);
-
-		if (playerPlace[i] != "") 
-			combined = "[" + landedCell.getName() + "]" + playerPlace[i];
-		else 
-			combined = "[" + landedCell.getName() + "]";
-		
-		cout << left << setw(17) << combined;
-	}
-	cout << endl<<endl;
-
-	Cell& landedCell = myMap.getCell(15);
-		if (playerPlace[15] != "")
-			combined = "[" + landedCell.getName() + "]" + playerPlace[15];
-		else
-			combined = "[" + landedCell.getName() + "]";
-		cout << left << setw(17) << combined;
-
-	landedCell = myMap.getCell(5);
-		if (playerPlace[5] != "")
-			combined = "[" + landedCell.getName() + "]" + playerPlace[5];
-		else
-			combined = "[" + landedCell.getName() + "]";
-		cout<< setw(51) << " " << setw(17) << combined<<endl<<endl;
-
-
-	landedCell = myMap.getCell(14);
-		if (playerPlace[14] != "")
-			combined = "[" + landedCell.getName() + "]" + playerPlace[14];
-		else
-			combined = "[" + landedCell.getName() + "]";
-		cout << left << setw(17) << combined;
-
-
-	landedCell = myMap.getCell(6);
-		if (playerPlace[6] != "")
-			combined = "[" + landedCell.getName() + "]" + playerPlace[6];
-		else
-			combined = "[" + landedCell.getName() + "]";
-		cout << setw(51) << " " << setw(17) << combined << endl << endl;
-
-
-	landedCell = myMap.getCell(13);
-		if (playerPlace[13] != "")
-			combined = "[" + landedCell.getName() + "]" + playerPlace[13];
-		else
-			combined = "[" + landedCell.getName() + "]";
-		cout << left << setw(17) << combined;
-
-	landedCell = myMap.getCell(7);
-		if (playerPlace[7] != "")
-			combined = "[" + landedCell.getName() + "]" + playerPlace[7];
-		else
-			combined = "[" + landedCell.getName() + "]";
-		cout << setw(51) <<" " << setw(17) << combined << endl << endl;
-
-
-	for (int i = 12;i >= 8;i--) {
-		Cell& landedCell = myMap.getCell(i);
-		if (playerPlace[i] != "")
-			combined = "[" + landedCell.getName() + "]" + playerPlace[i];
-		else
-			combined = "[" + landedCell.getName() + "]";
-
-		cout << left << setw(17) << combined;
-	}
-	cout << endl << endl;
-
-}
-
 
 int main() {
 	srand(time(0));
@@ -126,7 +43,7 @@ int main() {
 	cout << endl << endl;
 
 
-	// 2. 模擬進行 3 回合的遊戲
+	// 回合開始
 	for (int turn = 1; turn <= 6; turn++) {
 		Sleep(500);
 		cout << "[第 " << turn << " 回合]" << endl;
@@ -177,7 +94,7 @@ int main() {
 
 			drawMap(myMap, p, players);
 
-			// 簡單判斷一下踩到了什麼
+			// 判斷踩到了什麼
 			if (landedCell.getType() == CellType::Start) {
 				cout << " -> 踩到起點！休息一下" << endl;
 			}
@@ -228,7 +145,7 @@ int main() {
 		cout << endl;
 	}
 
-	cout << "==== 遊戲結束 ====" << endl;
+	cout << "==== 遊戲結束 ====" << endl<<endl;
 	
 	for (int i = 1; i <= players; i++) {
 		cout << "玩家 " << p[i].getName() << " 最終金額: " << p[i].getMoney() << " 元" << endl;
