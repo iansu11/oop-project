@@ -35,11 +35,11 @@ void drawMap(Map& myMap, Player p[], int playerCount) {
 
 
 	for (int i = 15, j = 5; i >= 13 && j <= 7; i--, j++) {
-		Cell& rightCell = myMap.getCell(i);
-		combined = "[" + rightCell.getName();
+		Cell& leftCell = myMap.getCell(i);
+		combined = "[" + leftCell.getName();
 
-		if (rightCell.getOwner() != -1)
-			combined += " P" + to_string(rightCell.getOwner()) + "]";
+		if (leftCell.getOwner() != -1)
+			combined += " P" + to_string(leftCell.getOwner()) + "]";
 		else
 			combined += "]";
 
@@ -48,11 +48,11 @@ void drawMap(Map& myMap, Player p[], int playerCount) {
 
 		cout << left << setw(w) << combined;
 
-		Cell& leftCell = myMap.getCell(j);
-		combined = "[" + leftCell.getName();
+		Cell& rightCell = myMap.getCell(j);
+		combined = "[" + rightCell.getName();
 
-		if (leftCell.getOwner() != -1)
-			combined += " P" + to_string(leftCell.getOwner()) + "]";
+		if (rightCell.getOwner() != -1)
+			combined += " P" + to_string(rightCell.getOwner()) + "]";
 		else
 			combined += "]";
 

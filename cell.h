@@ -15,19 +15,19 @@ class Cell {
 private:
 	string name;
 	CellType type;
-	int price, owner,toll;
+	int price, owner,toll,sellPrice;
 public:
 	Cell();
-	Cell(string n, CellType t, int p, int to);
+	Cell(string n, CellType t, int p, int to, int sell);
 	string getName();
 	CellType getType();
 	int getPrice();
 	int getToll();
-	int getOwner();
 
+	int getOwner();
 	void setOwner(int );
 
-
+	int getSellPrice();
 };
 
 #endif

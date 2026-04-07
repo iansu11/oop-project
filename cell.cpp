@@ -2,18 +2,20 @@
 using std::string;
 
 Cell::Cell() {
-	name = "未知";
+	name = "";
 	type = CellType::Start;
 	price = 0;
 	toll = 0;
+	sellPrice = 0;
 	owner = -1;
 }
 
-Cell::Cell(string n, CellType ty, int p, int to) {
+Cell::Cell(string n, CellType ty, int p, int to,int sell) {
 	name = n;
 	type = ty;
 	price = p;
 	toll = to;
+	sellPrice = sell;
 	owner = -1;
 }
 string Cell::getName() {
@@ -37,3 +39,6 @@ void Cell::setOwner(int player) {
 	owner = player;
 }
 
+int Cell::getSellPrice() {
+	return sellPrice;
+}

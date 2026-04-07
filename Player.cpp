@@ -4,9 +4,9 @@
 using std::cout; using std::endl;
 
 Player::Player() {
-	money = 20000;
+	money = 5000;
 	position = 0;
-	prison = false;
+	prison = 0;
 	bankruptcy = false;
 }
 
@@ -38,11 +38,11 @@ int Player::getPrison() {
 	return prison;
 }
 
-void Player::setBankruptcy(int b) {
+void Player::setBankruptcy(bool b) {
 	bankruptcy = b;
 }
 
-int Player::getBankruptcy() {
+bool Player::getBankruptcy() {
 	return bankruptcy;
 }
 
@@ -70,6 +70,10 @@ void Player::sellLand(int landid, int price) {
 	}
 }
 
+int Player::getOwnedLandCount() {
+	return ownedLands.size();
+}
+
 void Player::printOwnedLands(Map& mainMap) {
 	if (ownedLands.empty()) {
 		cout << "目前名下沒有任何房產。" << endl;
@@ -82,4 +86,8 @@ void Player::printOwnedLands(Map& mainMap) {
 			cout << i+1 << ": " << landed.getName() << endl;
 		}
 	}
+}
+
+int Player::getOwnedLandID(int listIndex) {
+	return ownedLands[listIndex];
 }

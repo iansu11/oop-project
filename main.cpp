@@ -44,16 +44,22 @@ int main() {
 
 
 	// 回合開始
-	for (int turn = 1; turn <= 6; turn++) {
+	for (int turn = 1; turn <= 10; turn++) {
 		Sleep(500);
 		cout << "[第 " << turn << " 回合]" << endl;
 
 		for (int i = 1; i <= players; i++) {
-			cout << "輪到玩家 " << p[i].getName() << endl;
+			cout << "輪到玩家 P" << i << ":"<<p[i].getName() << endl;
 
 			if (p[i].getPrison() > 0) {
 				cout << "坐牢休息一次" << endl;
 				p[i].setPrison(p[i].getPrison()-1);
+				cout << "------------------" << endl;
+				continue;
+			}
+
+			if(p[i].getBankruptcy()==1){
+				cout << "已經破產了，換下一位玩家" << endl;
 				cout << "------------------" << endl;
 				continue;
 			}
@@ -75,8 +81,8 @@ int main() {
 			cout << p[i].getName() << " 擲出了 " << steps << " 點。" << endl;
 
 			if (p[i].getPosition() + steps > myMap.getSize()) {
-				p[i].addMoney(1000);
-				cout << " -> 新的一圈，獲得 1000 元！目前金額: " << p[i].getMoney() << " 元" << endl;
+				p[i].addMoney(500);
+				cout << " -> 新的一圈，獲得 500 元！目前金額: " << p[i].getMoney() << " 元" << endl;
 			}
 
 			// 步驟 B: 計算新位置
@@ -100,7 +106,7 @@ int main() {
 			}
 			else if (landedCell.getType() == CellType::Land) {
 				char choice;
-				if (landedCell.getOwner() == -1) {
+				if (landedCell.getOwner() == -1 && p[i].getMoney() > landedCell.getPrice()) {
 					cout << "["<< landedCell.getName() << "] -> 這塊土地目前沒有人擁有，價格是: " << landedCell.getPrice() << " 元" << endl;
 					cout << "請問需要購買這塊土地嗎？(y/n): " << endl;
 					while (true) {
@@ -123,13 +129,46 @@ int main() {
 
 					}
 				}
-				else if(landedCell.getOwner()!=i){
+				else if(landedCell.getOwner()!=i && landedCell.getOwner() != -1){
 					cout << "你踩到 "<< p[landedCell.getOwner()].getName()<<" 的土地了！需要支付過路費: " << landedCell.getToll() << " 元" << endl;
 					p[i].payMoney(landedCell.getToll());
 					p[landedCell.getOwner()].addMoney(landedCell.getToll());
-				}
 
+					while (p[i].getMoney() < 0) {
+						cout << "⚠️ 警告！" << p[i].getName() << " 目前負債 " << p[i].getMoney() << " 元！" << endl;
+
+						if (p[i].getOwnedLandCount() > 0) {
+							cout << "請選擇要賣的土地來還債 (輸入土地編號): " << endl;
+							p[i].printOwnedLands(myMap);
+							int landChoice;
+							while (true) {
+								cin >> landChoice;
+								if (landChoice > 0 && landChoice <= p[i].getOwnedLandCount()) {
+									Cell& landToSell = myMap.getCell(p[i].getOwnedLandID(landChoice-1));
+									
+									p[i].sellLand(landChoice - 1, landToSell.getSellPrice());
+									myMap.setOwner(landChoice - 1, -1); // 土地變成無主
+									cout << "已賣出 " << landToSell.getName() << "，獲得 " << landToSell.getSellPrice() << " 元" << endl;
+									cout << "目前剩餘金額: " << p[i].getMoney() << " 元" << endl;
+									break;
+								}
+								else {
+									cout << "無效的土地選擇，請重新輸入。" << endl;
+								}
+							}
+						}
+						else {
+							cout << p[i].getName() << " 已經沒有任何土地可以賣了！宣告破產！" << endl;
+							p[i].setBankruptcy(1);
+							break;
+						}
+					}
+				}
+				else {
+					cout << "目前在 [" << landedCell.getName() << "] 上" << endl;
+				}
 			}
+
 			else if (landedCell.getType() == CellType::Jail) {
 				cout << " -> 踩到監獄了！" << endl;
 				p[i].setPrison(3);
