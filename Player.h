@@ -38,6 +38,7 @@ public:
 
 	int getOwnedLandCount();
 	void printOwnedLands(Map& mainMap);
+	void printSellLands(Map& mainMap);
 	int getOwnedLandID(int listIndex);
 };
 

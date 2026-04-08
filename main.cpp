@@ -44,7 +44,7 @@ int main() {
 
 
 	// 回合開始
-	for (int turn = 1; turn <= 10; turn++) {
+	for (int turn = 1; turn <= 15; turn++) {
 		Sleep(500);
 		cout << "[第 " << turn << " 回合]" << endl;
 
@@ -81,7 +81,7 @@ int main() {
 			cout << p[i].getName() << " 擲出了 " << steps << " 點。" << endl;
 
 			if (p[i].getPosition() + steps > myMap.getSize()) {
-				p[i].addMoney(500);
+				p[i].addMoney(0);
 				cout << " -> 新的一圈，獲得 500 元！目前金額: " << p[i].getMoney() << " 元" << endl;
 			}
 
@@ -108,6 +108,7 @@ int main() {
 				char choice;
 				if (landedCell.getOwner() == -1 && p[i].getMoney() > landedCell.getPrice()) {
 					cout << "["<< landedCell.getName() << "] -> 這塊土地目前沒有人擁有，價格是: " << landedCell.getPrice() << " 元" << endl;
+					cout << "你目前有 " << p[i].getMoney() << " 元" << endl;
 					cout << "請問需要購買這塊土地嗎？(y/n): " << endl;
 					while (true) {
 						choice = _getch(); // 讀取按鍵
@@ -133,21 +134,23 @@ int main() {
 					cout << "你踩到 "<< p[landedCell.getOwner()].getName()<<" 的土地了！需要支付過路費: " << landedCell.getToll() << " 元" << endl;
 					p[i].payMoney(landedCell.getToll());
 					p[landedCell.getOwner()].addMoney(landedCell.getToll());
+					cout << "目前剩餘金額: " << p[i].getMoney() << " 元" << endl;
 
 					while (p[i].getMoney() < 0) {
-						cout << "⚠️ 警告！" << p[i].getName() << " 目前負債 " << p[i].getMoney() << " 元！" << endl;
+						cout << endl << "警告！！" << p[i].getName() << " 目前負債 " << p[i].getMoney() << " 元！" << endl;
 
 						if (p[i].getOwnedLandCount() > 0) {
 							cout << "請選擇要賣的土地來還債 (輸入土地編號): " << endl;
-							p[i].printOwnedLands(myMap);
+							p[i].printSellLands(myMap);
 							int landChoice;
 							while (true) {
 								cin >> landChoice;
 								if (landChoice > 0 && landChoice <= p[i].getOwnedLandCount()) {
-									Cell& landToSell = myMap.getCell(p[i].getOwnedLandID(landChoice-1));
+									int realLandId = p[i].getOwnedLandID(landChoice - 1);
+									Cell& landToSell = myMap.getCell(realLandId);
 									
-									p[i].sellLand(landChoice - 1, landToSell.getSellPrice());
-									myMap.setOwner(landChoice - 1, -1); // 土地變成無主
+									p[i].sellLand(realLandId, landToSell.getSellPrice());
+									myMap.setOwner(realLandId, -1); // 土地變成無主
 									cout << "已賣出 " << landToSell.getName() << "，獲得 " << landToSell.getSellPrice() << " 元" << endl;
 									cout << "目前剩餘金額: " << p[i].getMoney() << " 元" << endl;
 									break;
@@ -189,6 +192,7 @@ int main() {
 	for (int i = 1; i <= players; i++) {
 		cout << "玩家 " << p[i].getName() << " 最終金額: " << p[i].getMoney() << " 元" << endl;
 		p[i].printOwnedLands(myMap);
+		cout << endl;
 	}
 
 }

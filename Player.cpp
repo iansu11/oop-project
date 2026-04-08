@@ -88,6 +88,14 @@ void Player::printOwnedLands(Map& mainMap) {
 	}
 }
 
+void Player::printSellLands(Map& mainMap) {
+	cout << "可出售的土地:"<<endl;
+	for (int i = 0;i < ownedLands.size();i++) {
+		Cell& landed = mainMap.getCell(ownedLands[i]);
+		cout << i+1 << ": " << landed.getName() << " (賣出價格: " << landed.getSellPrice() << " 元)"<< endl;
+	}
+}
+
 int Player::getOwnedLandID(int listIndex) {
 	return ownedLands[listIndex];
 }
