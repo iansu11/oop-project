@@ -21,7 +21,6 @@ int main() {
 	Dice dice;                     
 	int players;
 
-
 	cout << "請輸入玩家人數 (2-4): ";
 	cin >> players;
 
@@ -81,8 +80,8 @@ int main() {
 			cout << p[i].getName() << " 擲出了 " << steps << " 點。" << endl;
 
 			if (p[i].getPosition() + steps > myMap.getSize()) {
-				p[i].addMoney(0);
-				cout << " -> 新的一圈，獲得 500 元！目前金額: " << p[i].getMoney() << " 元" << endl;
+				p[i].addMoney(2000);
+				cout << " -> 新的一圈，獲得 2000 元！目前金額: " << p[i].getMoney() << " 元" << endl;
 			}
 
 			// 步驟 B: 計算新位置
@@ -131,6 +130,7 @@ int main() {
 					}
 				}
 				else if(landedCell.getOwner()!=i && landedCell.getOwner() != -1){
+					cout << "目前在 [" << landedCell.getName() << "]，";
 					cout << "你踩到 "<< p[landedCell.getOwner()].getName()<<" 的土地了！需要支付過路費: " << landedCell.getToll() << " 元" << endl;
 					p[i].payMoney(landedCell.getToll());
 					p[landedCell.getOwner()].addMoney(landedCell.getToll());
@@ -151,6 +151,8 @@ int main() {
 									
 									p[i].sellLand(realLandId, landToSell.getSellPrice());
 									myMap.setOwner(realLandId, -1); // 土地變成無主
+									landToSell.resetHouse(); 
+
 									cout << "已賣出 " << landToSell.getName() << "，獲得 " << landToSell.getSellPrice() << " 元" << endl;
 									cout << "目前剩餘金額: " << p[i].getMoney() << " 元" << endl;
 									break;
@@ -165,6 +167,39 @@ int main() {
 							p[i].setBankruptcy(1);
 							break;
 						}
+					}
+				}
+				else if (landedCell.getOwner() == i) {
+					int choice;
+					if (p[i].getMoney() < landedCell.getHousePrice()) {
+						cout << "目前在 [" << landedCell.getName() << "] " ;
+						cout << "是你自己的土地，但目前金額不足興建房屋！" << endl;
+						cout << "目前剩餘金額: " << p[i].getMoney() << " 元" << endl;
+					}
+					else if (landedCell.getHouseLevel() < 5) {
+						cout << "目前在 [" << landedCell.getName() << "] ";
+						cout << "是你自己的土地，請問需要興建房屋嗎？(y/n):" << endl;
+						while (true) {
+							choice = _getch();
+							if (choice == 'y' || choice == 'Y') {
+								cout << "已興建房屋，花了" << landedCell.getHousePrice() << " 元" << endl;
+								p[i].payMoney(landedCell.getHousePrice());
+								landedCell.upgradeHouse();
+								cout << "目前剩餘金額: " << p[i].getMoney() << " 元" << endl;
+								break;
+							}
+							else if (choice == 'n' || choice == 'N') {
+								cout << "放棄興建房屋" << endl;
+								break;
+							}
+							else {
+								cout << "請輸入 y 或 n: " << endl;
+							}
+						}
+					}
+					else {
+						cout << "目前在 [" << landedCell.getName() << "] ";
+						cout << "是你自己的土地，房屋已達到最高等級了！!" << endl;
 					}
 				}
 				else {

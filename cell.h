@@ -15,10 +15,10 @@ class Cell {
 private:
 	string name;
 	CellType type;
-	int price, owner,toll,sellPrice;
+	int price, owner,toll,sellPrice,housePrice,houseLevel;
 public:
 	Cell();
-	Cell(string n, CellType t, int p, int to, int sell);
+	Cell(string n, CellType t, int p, int to, int sell, int h);
 	string getName();
 	CellType getType();
 	int getPrice();
@@ -28,6 +28,13 @@ public:
 	void setOwner(int );
 
 	int getSellPrice();
+
+	void upgradeHouse();
+	void resetHouse();
+	int getHouseLevel();
+	int getHousePrice();
+
+
 };
 
 #endif
