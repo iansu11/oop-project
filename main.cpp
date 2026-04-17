@@ -180,7 +180,6 @@ int main() {
 
 					}
 					else if (landedCell.getOwner() == i) {
-						int choice;
 						if (p[i].getMoney() < landedCell.getHousePrice()) {
 							cout << "目前在 [" << landedCell.getName() << "] ";
 							cout << "是你自己的土地，但目前金額不足興建房屋！" << endl;
