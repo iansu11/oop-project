@@ -54,6 +54,7 @@ int main() {
 		for (int i = 1; i <= players; i++) {
 			cout << "輪到玩家 P" << i << ":"<<p[i].getName() << endl;
 
+			bool skip = false;
 			if (p[i].getPrison() > 0) {
 				if (p[i].getFreeJailCard() == true) {
 					cout << "你有免坐牢卡，是否要使用？(y/n): " << endl;
@@ -72,6 +73,7 @@ int main() {
 							cout << "坐牢休息一次" << endl;
 							p[i].setPrison(p[i].getPrison() - 1);
 							cout << "------------------" << endl;
+							skip = true;
 							break;
 						}
 						else {
@@ -85,6 +87,10 @@ int main() {
 					cout << "------------------" << endl;
 					continue;
 				}
+			}
+
+			if (skip == true) {
+				continue; 
 			}
 
 			if(p[i].getBankruptcy()==1){
@@ -213,6 +219,7 @@ int main() {
 
 				else if (landedCell.getType() == CellType::Chance) {
 					char inputc;
+					cout << "[機會]" << endl;
 					cout << "請按下[C]鍵 來抽機會" << endl;
 
 					while (true) {
@@ -232,6 +239,7 @@ int main() {
 				}
 				else if (landedCell.getType() == CellType::Fate) {
 					char inputf;
+					cout << "[命運]" << endl;
 					cout << "請按下[F]鍵 來抽命運" << endl;
 
 					while (true) {
