@@ -26,16 +26,24 @@ int main() {
 
 
 	cout << "請輸入玩家人數 (2-4): ";
-	cin >> players;
 
-	while (players > 4 || players < 2) {
-		cout << "玩家人數必須在 2 到 4 之間，請重新輸入: ";
-		cin >> players;
+	while (true) {
+		char number= _getch();
+
+		if (number >= '2' && number <= '4') {
+			players = number - '0'; // 將字符轉換為整數
+			break;
+		}
+		else {
+			cout << endl << "玩家人數必須在 2 到 4 之間，請重新輸入: ";
+		}
+
 	}
+
 
 	for (int i = 1;i <= players;i++) {
 		string name;
-		cout << "請依序輸入"<<i<<"號玩家名稱(P"<<i<<"):";
+		cout << endl << "請依序輸入"<<i<<"號玩家名稱(P"<<i<<"):";
 		cin >> name;
 		p[i].setName(name);
 	}
@@ -245,7 +253,7 @@ int main() {
 						inputf = _getch(); // 讀取按鍵
 						if (inputf == 'f' || inputf == 'F') {
 							cout << " (抽卡中...)\n";
-							Sleep(100);
+							Sleep(500);
 							break;
 						}
 					}
