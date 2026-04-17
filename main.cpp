@@ -32,6 +32,7 @@ int main() {
 
 		if (number >= '2' && number <= '4') {
 			players = number - '0'; // 將字符轉換為整數
+			cout << players << endl;
 			break;
 		}
 		else {
@@ -39,7 +40,6 @@ int main() {
 		}
 
 	}
-
 
 	for (int i = 1;i <= players;i++) {
 		string name;

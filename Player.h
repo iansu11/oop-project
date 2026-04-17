@@ -10,8 +10,8 @@ using std::vector;
 class Player{
 private:
 	string name;
-	int money, position, prison, FreeJailCard;
-	bool bankruptcy;
+	int money, position, prison;
+	bool bankruptcy, FreeJailCard;
 	vector<int> ownedLands;
 
 public:
