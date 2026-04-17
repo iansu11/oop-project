@@ -8,6 +8,7 @@ Player::Player() {
 	position = 0;
 	prison = 0;
 	bankruptcy = false;
+	FreeJailCard = 0;
 }
 
 void Player::setName(string n) {
@@ -44,6 +45,13 @@ void Player::setBankruptcy(bool b) {
 
 bool Player::getBankruptcy() {
 	return bankruptcy;
+}
+
+void Player::setFreeJailCard(bool j) {
+	FreeJailCard = j;
+}
+bool Player::getFreeJailCard() {
+	return FreeJailCard;
 }
 
 int Player::addMoney(int amount) {

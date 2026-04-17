@@ -7,6 +7,7 @@ enum class CellType {
 	Start,
 	Land,
 	Chance,
+	Fate,
 	Jail,
 	PublicLand,
 };

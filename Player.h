@@ -10,7 +10,7 @@ using std::vector;
 class Player{
 private:
 	string name;
-	int money, position, prison;
+	int money, position, prison, FreeJailCard;
 	bool bankruptcy;
 	vector<int> ownedLands;
 
@@ -29,6 +29,9 @@ public:
 
 	void setBankruptcy(bool );
 	bool getBankruptcy();
+
+	void setFreeJailCard(bool);
+	bool getFreeJailCard();
 
 	int addMoney(int amount);
 	int payMoney(int amount);
