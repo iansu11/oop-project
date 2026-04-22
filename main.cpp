@@ -286,7 +286,20 @@ int main() {
 	for (int i = 1; i <= players; i++) {
 		cout << "玩家 " << p[i].getName() << " 最終金額: " << p[i].getMoney() << " 元" << endl;
 		p[i].printOwnedLands(myMap);
+		cout << "總資產: " << p[i].getTotalAssets(myMap) << " 元" << endl;
 		cout << endl;
 	}
 
+	int maxAssets = p[1].getTotalAssets(myMap);
+	int maxOwner = 1;
+
+	for (int i = 2; i <= players; i++) {
+		if (p[i].getTotalAssets(myMap) > maxAssets) {
+			maxAssets = p[i].getTotalAssets(myMap);
+			maxOwner = i;
+		}
+	}
+
+	cout << "恭喜玩家 " << p[maxOwner].getName() << " 獲得最終勝利！" << endl;
+	cout << "總資產為: " << maxAssets << " 元" << endl;
 }

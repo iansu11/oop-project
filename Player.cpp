@@ -91,7 +91,13 @@ void Player::printOwnedLands(Map& mainMap) {
 		cout << "所擁有的土地:"<<endl;
 		for (int i = 0;i < ownedLands.size();i++) {
 			Cell& landed = mainMap.getCell(ownedLands[i]);
-			cout << i+1 << ": " << landed.getName() << endl;
+			cout << i+1 << ": " << landed.getName() << "(" << landed.getPrice() << "元" ;
+			if (landed.getHouseLevel() > 0) {
+				cout << "，房屋*" << landed.getHouseLevel() << ")" << endl;
+			}
+			else {
+				cout << ")" << endl;
+			}
 		}
 	}
 }
@@ -106,4 +112,15 @@ void Player::printSellLands(Map& mainMap) {
 
 int Player::getOwnedLandID(int listIndex) {
 	return ownedLands[listIndex];
+}
+
+int Player::getTotalAssets(Map& mainMap) {
+	int total = 0;
+	for (int i = 0;i < ownedLands.size();i++) {
+		Cell& landed = mainMap.getCell(ownedLands[i]);
+		total += landed.getPrice() + (landed.getHouseLevel() * landed.getHousePrice());
+	}
+	total += money;
+
+	return total;
 }

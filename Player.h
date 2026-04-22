@@ -43,6 +43,8 @@ public:
 	void printOwnedLands(Map& mainMap);
 	void printSellLands(Map& mainMap);
 	int getOwnedLandID(int listIndex);
+
+	int getTotalAssets(Map& mainMap);
 };
 
 #endif
