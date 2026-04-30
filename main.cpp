@@ -50,48 +50,13 @@ int main() {
 	cout << endl;
 	
 	int targetAmount = 0;   // 用來存玩家設定的目標金額
-	bool isGameOver = false;// 遊戲結束的開關 (取代原本寫死的 15 回合)
+	bool isGameOver = false;// 遊戲結束的開關
 	int currentTurn = 1;    // 現在是第幾回合
 	int winnerIndex = -1;   // 用來記錄最後是幾號玩家贏了
 	int maxTurns = 0;      // 用來存玩家設定的最大回合數
 
-	cout << "請選擇遊戲模式：" << endl;
-	cout << "1. 回合制 | 2. 目標制 | 3. 破產制 : ";
-
-	while (true) {
-		string input; // 每次迴圈重新接收
-		cin >> input;
-
-		// 防呆：長度必須為 1，且在 '1' 到 '3' 之間
-		if (input.length() == 1 && input[0] >= '1' && input[0] <= '3') {
-			gameMode = input[0] - '0'; // 成功轉換
-			cout << "已選擇模式 " << gameMode ;
-			if (gameMode == 1) {
-				cout << ".回合制，請輸入想進行的回合:";
-				while (!(cin >> maxTurns)) {
-					cin.clear(); // 清除 cin 的錯誤狀態 (Failbit)
-					cin.ignore(10000,'\n');//  忽略緩衝區內剩餘的字元，直到遇到換行符號 (\n) 為止
-					cout << "輸入無效！請輸入純數字的回合數: ";
-				}
-			}
-			else if (gameMode == 2) {
-				cout << ".目標制，請輸入達成勝利的目標金額:";
-				while (!(cin >> targetAmount)) {
-					cin.clear(); // 清除 cin 的錯誤狀態 (Failbit)
-					cin.ignore(10000,'\n');//  忽略緩衝區內剩餘的字元，直到遇到換行符號 (\n) 為止
-					cout << "輸入無效！請輸入純數字的目標金額: ";
-				}
-			}
-			else if (gameMode == 3) {
-				cout << ".破產制，遊戲將持續進行直到只剩下一位玩家未破產。" << endl;
-			}
-			break; // 跳出無限迴圈
-		}
-		else {
-			cout << "[錯誤] 請輸入正確的數字 (1-3) :" << endl;
-		}
-	}
-	
+	// 遊戲模式選擇
+	selectGameMode(gameMode, maxTurns, targetAmount);
 
 	cout << endl << "==== 遊戲開始 ====" << endl;
 	cout << "地圖總共有 " << myMap.getSize() << " 格" << endl;
@@ -202,49 +167,7 @@ int main() {
 		cout << endl;
 	}
 
-	if (gameMode == 1) {
-		int maxAssets = -9999;
-		int maxOwner = 1,tieCount = 0;
-		int asset[5] = {};
+	// 判斷並列出最終贏家
+	announceWinner(gameMode, p, players, myMap, winnerIndex);
 
-		for (int i = 1; i <= players; i++) {
-			if (p[i].getBankruptcy() == 0) {
-				asset[i] = p[i].getTotalAssets(myMap);
-
-				if (p[i].getTotalAssets(myMap) > maxAssets) {
-					maxAssets = p[i].getTotalAssets(myMap);
-					maxOwner = i;
-					tieCount = 0;
-				}
-				if (p[i].getTotalAssets(myMap) == maxAssets) {
-					tieCount++;
-				}
-			}	
-		}
-
-		if (tieCount == 1) {
-			cout << "恭喜玩家 " << p[maxOwner].getName() << " 獲得最終勝利！" << endl;
-			cout << "總資產為: " << maxAssets << " 元" << endl;
-			
-			return 0;
-		}
-		else {
-			cout << "本局遊戲出現平手，以下玩家並列獲勝！" << endl;
-			for (int i = 1;i <= players;i++) {
-				if (asset[i] == maxAssets) {
-					cout << "玩家 " << p[i].getName() << " 獲得最終勝利！" << endl;
-					cout << "總資產為: " << maxAssets << " 元" << endl;
-				}
-			}
-			return 0;
-		}
-	}
-
-	else if (gameMode == 2 || gameMode == 3) {
-		
-		cout << "恭喜玩家 " << p[winnerIndex].getName() << " 獲得最終勝利！" << endl;
-		cout << "總資產為: " << p[winnerIndex].getTotalAssets(myMap) << " 元" << endl;
-		
-		return 0;
-	}
 }
