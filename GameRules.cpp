@@ -1,7 +1,6 @@
 ﻿#include "GameRules.h"
 #include <iostream>
 #include <conio.h> // 用於 _getch() 函數
-#include "BankruptcyManager.h"
 #include "Map.h"
 using namespace std;
 

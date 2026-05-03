@@ -2,16 +2,13 @@
 #include <vector>
 #include <cstdlib>
 #include <ctime>
-#include <iomanip>
 #include <string>
 #include <conio.h> // 用於 _getch() 函數
 #include <windows.h> // 使用 Sleep()
 #include "Player.h"
 #include "Dice.h"
-#include "Cell.h"
 #include "Map.h"
 #include "CardManager.h"
-#include "BankruptcyManager.h"
 #include "GameRules.h"
 using namespace std;
 

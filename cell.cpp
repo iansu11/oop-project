@@ -1,9 +1,4 @@
 ﻿#include "Cell.h"
-#include "Player.h"
-#include "Map.h"
-#include "CardManager.h"
-#include <iostream>
-#include <conio.h> // 用於 _getch() 函數
 using namespace std;
 Cell::Cell() {
 	name = "";
