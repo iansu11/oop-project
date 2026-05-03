@@ -10,7 +10,6 @@
 #include "Dice.h"
 #include "Cell.h"
 #include "Map.h"
-#include "UI.h"
 #include "CardManager.h"
 #include "BankruptcyManager.h"
 #include "GameRules.h"
@@ -24,6 +23,7 @@ int main() {
 	Dice dice;  
 	CardManager cardAdmin;
 	int players=0, gameMode=0;
+	RuleManager ruleAdmin;
 
 
 	cout << "請輸入玩家人數 (2-4): ";
@@ -34,17 +34,20 @@ int main() {
 
 		if (number.length() == 1 && number[0] >= '2' && number[0] <= '4') {
 			players = number[0] - '0'; // 將字符轉換為整數
+			cin.ignore(1000, '\n'); // 清除輸入緩衝區
 			break;
 		}
 		else {
 			cout << endl << "玩家人數必須在 2 到 4 之間，請重新輸入: ";
+			cin.ignore(1000, '\n'); // 清除輸入緩衝區
 		}
+		
 	}
 
 	for (int i = 1;i <= players;i++) {
 		string name;
 		cout << endl << "請依序輸入"<<i<<"號玩家名稱(P"<<i<<"):";
-		cin >> name;
+		getline(cin, name);
 		p[i].setName(name);
 	}
 	cout << endl;
@@ -56,7 +59,7 @@ int main() {
 	int maxTurns = 0;      // 用來存玩家設定的最大回合數
 
 	// 遊戲模式選擇
-	selectGameMode(gameMode, maxTurns, targetAmount);
+	ruleAdmin.selectGameMode(gameMode, maxTurns, targetAmount);
 
 	cout << endl << "==== 遊戲開始 ====" << endl;
 	cout << "地圖總共有 " << myMap.getSize() << " 格" << endl;
@@ -72,15 +75,12 @@ int main() {
 		for (int i = 1; i <= players; i++) {
 			cout << "輪到玩家 P" << i << ":"<<p[i].getName() << endl;
 
-			//---坐牢判定開始---
-			bool skip = false;
 
-			jailRule(p[i], cardAdmin, skip);
-
-			if (skip == true) {
-				continue; 
+			//坐牢判定
+			if (ruleAdmin.jailRule(p[i], cardAdmin) == true) {
+				continue; // 裁判說要坐牢，直接跳過換下一位！
 			}
-			//---坐牢判定結束---
+		
 
 			if(p[i].getBankruptcy()==1){
 				cout << "已經破產了，換下一位玩家" << endl;
@@ -117,7 +117,7 @@ int main() {
 			p[i].setPosition(newPos);
 
 			// 進行格子判斷
-			executeCellAction(p, i, myMap, players, cardAdmin);
+			ruleAdmin.executeCellAction(p, i, myMap, players, cardAdmin);
 
 			int activePlayers = 0;
 			int potentialWinner = -1;
@@ -168,6 +168,6 @@ int main() {
 	}
 
 	// 判斷並列出最終贏家
-	announceWinner(gameMode, p, players, myMap, winnerIndex);
+	ruleAdmin.announceWinner(gameMode, p, players, myMap, winnerIndex);
 
 }

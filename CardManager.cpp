@@ -45,7 +45,7 @@ void CardManager::executeChance(Player& currentPlayer, Map& gameMap, Player p[],
 			cout<<"醫療開銷，支付 200 元掛號費。" << endl;
 			currentPlayer.payMoney(200);
 			cout << "目前剩餘金額: " << currentPlayer.getMoney() << " 元" << endl;
-			checkBankruptcy(currentPlayer, gameMap);
+			BankruptcyManager::checkBankruptcy(currentPlayer, gameMap);
 			break;
 		case 4:
 			cout << "免坐牢一次，可以保留使用" << endl;
@@ -55,7 +55,7 @@ void CardManager::executeChance(Player& currentPlayer, Map& gameMap, Player p[],
 			cout << "超速行駛，罰款 600 元" << endl;
 			currentPlayer.payMoney(600);
 			cout << "目前剩餘金額: " << currentPlayer.getMoney() << " 元" << endl;
-			checkBankruptcy(currentPlayer, gameMap);
+			BankruptcyManager::checkBankruptcy(currentPlayer, gameMap);
 			break;
 		case 6:
 			cout << "在校表現優異，獲得獎學金 800 元" << endl;
@@ -101,7 +101,7 @@ void CardManager::executeFate(Player& currentPlayer, Map& gameMap, Player p[], i
 				if (&p[j] != &currentPlayer) {
 					p[j].payMoney(200);
 					currentPlayer.addMoney(200);
-					checkBankruptcy(p[j], gameMap);
+					BankruptcyManager::checkBankruptcy(p[j], gameMap);
 				}
 			}
 			cout << "目前金額: " << currentPlayer.getMoney() << " 元" << endl;
@@ -116,13 +116,13 @@ void CardManager::executeFate(Player& currentPlayer, Map& gameMap, Player p[], i
 			cout<<"繳納牌照稅 500 元。" << endl;
 			currentPlayer.payMoney(500);
 			cout << "目前剩餘金額: " << currentPlayer.getMoney() << " 元" << endl;
-			checkBankruptcy(currentPlayer, gameMap);
+			BankruptcyManager::checkBankruptcy(currentPlayer, gameMap);
 			break;
 		case 4:
 			cout << "路邊違規停車，罰款 1200 元。" << endl;
 			currentPlayer.payMoney(1200);
 			cout << "目前剩餘金額: " << currentPlayer.getMoney() << " 元" << endl;
-			checkBankruptcy(currentPlayer, gameMap);
+			BankruptcyManager::checkBankruptcy(currentPlayer, gameMap);
 			break;
 		case 5: {
 			cout << "房屋修繕費，每一棟房子需支付 200 元維修費。" << endl;
@@ -131,8 +131,8 @@ void CardManager::executeFate(Player& currentPlayer, Map& gameMap, Player p[], i
 
 			for (int i = 0;i < currentPlayer.getOwnedLandCount();i++) {
 				int landId = currentPlayer.getOwnedLandID(i);
-				Cell& landedCell = gameMap.getCell(landId);
-				totalHouses += landedCell.getHouseLevel();
+				Cell* landedCell = gameMap.getCell(landId);
+				totalHouses += landedCell->getHouseLevel();
 			}
 			if (totalHouses > 0) {
 				cout << "你有 " << totalHouses << " 棟房子，總共需要支付 " << totalHouses * 200 << " 元的修繕費。" << endl;
@@ -143,7 +143,7 @@ void CardManager::executeFate(Player& currentPlayer, Map& gameMap, Player p[], i
 				cout << "名下沒有任何房子，不需要支付修繕費。" << endl;
 				cout << "目前金額: " << currentPlayer.getMoney() << " 元" << endl;
 			}
-			checkBankruptcy(currentPlayer, gameMap);
+			BankruptcyManager::checkBankruptcy(currentPlayer, gameMap);
 			break;
 		}
 		case 6:
@@ -163,13 +163,13 @@ void CardManager::executeFate(Player& currentPlayer, Map& gameMap, Player p[], i
 			cout << "做善事，捐款 300 元" << endl;
 			currentPlayer.payMoney(300);
 			cout << "目前剩餘金額: " << currentPlayer.getMoney() << " 元" << endl;
-			checkBankruptcy(currentPlayer, gameMap);
+			BankruptcyManager::checkBankruptcy(currentPlayer, gameMap);
 			break;
 		case 9:
 			cout << "錢包遺失，損失 400 元。" << endl;
 			currentPlayer.payMoney(400);
 			cout << "目前剩餘金額: " << currentPlayer.getMoney() << " 元" << endl;
-			checkBankruptcy(currentPlayer, gameMap);
+			BankruptcyManager::checkBankruptcy(currentPlayer, gameMap);
 			break;
 		case 10:
 			cout << "中樂透，獲得 1000 元。" << endl;

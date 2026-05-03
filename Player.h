@@ -18,20 +18,20 @@ public:
 	Player();
 
 	void setName(string n);
-	string getName();
-	int getMoney();
+	string getName() const;
+	int getMoney() const;
 
 	void setPosition(int p);
-	int getPosition();
+	int getPosition() const;
 
 	void setPrison(int );
-	int getPrison();
+	int getPrison() const ;
 
 	void setBankruptcy(bool );
-	bool getBankruptcy();
+	bool getBankruptcy() const;
 
 	void setFreeJailCard(bool);
-	bool getFreeJailCard();
+	bool getFreeJailCard() const;
 
 	int addMoney(int amount);
 	int payMoney(int amount);
@@ -39,12 +39,12 @@ public:
 	void buyLand(int landid);
 	void sellLand(int landid,int price);
 
-	int getOwnedLandCount();
-	void printOwnedLands(Map& mainMap);
-	void printSellLands(Map& mainMap);
-	int getOwnedLandID(int listIndex);
+	int getOwnedLandCount() const;
+	void printOwnedLands(const Map& mainMap) const;
+	void printSellLands(const Map& mainMap) const;
+	int getOwnedLandID(const int listIndex) const;
 
-	int getTotalAssets(Map& mainMap);
+	int getTotalAssets(const Map& mainMap) const;
 };
 
 #endif

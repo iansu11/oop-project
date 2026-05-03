@@ -15,11 +15,11 @@ void Player::setName(string n) {
 	name = n;
 }
 
-string Player::getName() {
+string Player::getName() const {
 	return name;
 }
 
-int Player::getMoney() {
+int Player::getMoney() const {
 	return money;
 }
 
@@ -27,7 +27,7 @@ void Player::setPosition(int p) {
 	position = p;
 }
 
-int Player::getPosition() {
+int Player::getPosition() const {
 	return position;
 }
 
@@ -35,7 +35,7 @@ void Player::setPrison(int p) {
 	prison = p;
 }
 
-int Player::getPrison() {
+int Player::getPrison() const {
 	return prison;
 }
 
@@ -43,14 +43,14 @@ void Player::setBankruptcy(bool b) {
 	bankruptcy = b;
 }
 
-bool Player::getBankruptcy() {
+bool Player::getBankruptcy() const {
 	return bankruptcy;
 }
 
 void Player::setFreeJailCard(bool j) {
 	FreeJailCard = j;
 }
-bool Player::getFreeJailCard() {
+bool Player::getFreeJailCard() const {
 	return FreeJailCard;
 }
 
@@ -78,11 +78,11 @@ void Player::sellLand(int landid, int price) {
 	}
 }
 
-int Player::getOwnedLandCount() {
+int Player::getOwnedLandCount() const {
 	return ownedLands.size();
 }
 
-void Player::printOwnedLands(Map& mainMap) {
+void Player::printOwnedLands(const Map& mainMap) const {
 	if (ownedLands.empty()) {
 		cout << "目前名下沒有任何房產。" << endl;
 	}
@@ -90,10 +90,10 @@ void Player::printOwnedLands(Map& mainMap) {
 	else {
 		cout << "所擁有的土地:"<<endl;
 		for (int i = 0;i < ownedLands.size();i++) {
-			Cell& landed = mainMap.getCell(ownedLands[i]);
-			cout << i+1 << ": " << landed.getName() << "(" << landed.getPrice() << "元" ;
-			if (landed.getHouseLevel() > 0) {
-				cout << "，房屋*" << landed.getHouseLevel() << ")" << endl;
+			Cell* landed = mainMap.getCell(ownedLands[i]);
+			cout << i+1 << ": " << landed->getName() << "(" << landed->getPrice() << "元" ;
+			if (landed->getHouseLevel() > 0) {
+				cout << "，房屋*" << landed->getHouseLevel() << ")" << endl;
 			}
 			else {
 				cout << ")" << endl;
@@ -102,23 +102,23 @@ void Player::printOwnedLands(Map& mainMap) {
 	}
 }
 
-void Player::printSellLands(Map& mainMap) {
+void Player::printSellLands(const Map& mainMap) const {
 	cout << "可出售的土地:"<<endl;
 	for (int i = 0;i < ownedLands.size();i++) {
-		Cell& landed = mainMap.getCell(ownedLands[i]);
-		cout << i+1 << ": " << landed.getName() << " (賣出價格: " << landed.getSellPrice() << " 元)"<< endl;
+		Cell* landed = mainMap.getCell(ownedLands[i]);
+		cout << i+1 << ": " << landed->getName() << " (賣出價格: " << landed->getSellPrice() << " 元)"<< endl;
 	}
 }
 
-int Player::getOwnedLandID(int listIndex) {
+int Player::getOwnedLandID(const int listIndex) const {
 	return ownedLands[listIndex];
 }
 
-int Player::getTotalAssets(Map& mainMap) {
+int Player::getTotalAssets(const Map& mainMap) const {
 	int total = 0;
 	for (int i = 0;i < ownedLands.size();i++) {
-		Cell& landed = mainMap.getCell(ownedLands[i]);
-		total += landed.getPrice() + (landed.getHouseLevel() * landed.getHousePrice());
+		Cell* landed = mainMap.getCell(ownedLands[i]);
+		total += landed->getPrice() + (landed->getHouseLevel() * landed->getHousePrice());
 	}
 	total += money;
 

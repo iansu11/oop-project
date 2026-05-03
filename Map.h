@@ -1,21 +1,25 @@
 #ifndef MAP_H
 #define MAP_H
-
 #include <vector>
-#include "Cell.h"
+
+class Cell;
+class Player;
 
 class Map {
 private:
-	std::vector<Cell> gameMap;
+	std::vector<Cell*> gameMap;
 
 public:
 	Map();
+	~Map();
 
 	int getSize();
 
-	Cell& getCell(int);
+	Cell* getCell(int) const;
 	
 	void setOwner(int index, int player);
+
+	void drawMap(const Player p[], const int playerCount) const;
 };
 
 #endif

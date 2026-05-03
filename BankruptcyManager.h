@@ -3,6 +3,10 @@
 #include "Player.h"
 #include "Map.h"
 
-void checkBankruptcy(Player& currentPlayer, Map& myMap);
+class BankruptcyManager {
+public:
+	static void checkBankruptcy(Player& currentPlayer, Map& myMap);
+
+};
 
 #endif
