@@ -52,14 +52,24 @@ void RuleManager::selectGameMode(int& gameMode, int& maxTurns, int& targetAmount
 		if (input.length() == 1 && input[0] >= '1' && input[0] <= '3') {
 			gameMode = input[0] - '0'; // 成功轉換
 			cout << "已選擇模式 " << gameMode;
+
 			if (gameMode == 1) {
-				cout << ".回合制，請輸入想進行的回合:";
-				while (!(cin >> maxTurns)) {
-					cin.clear(); // 清除 cin 的錯誤狀態 (Failbit)
-					cin.ignore(10000, '\n');//  忽略緩衝區內剩餘的字元，直到遇到換行符號 (\n) 為止
-					cout << "輸入無效！請輸入純數字的回合數: ";
+				cout << ".回合制，請輸入想進行的回合 (至少10回合):";
+				while (true) {
+					if (!(cin >> maxTurns)) {
+						cin.clear(); // 清除 cin 的錯誤狀態 (Failbit)
+						cin.ignore(10000, '\n'); // 忽略緩衝區內剩餘的字元
+						cout << "輸入無效！請輸入純數字的回合數: ";
+					}
+					else if (maxTurns < 10) {
+						cout << "回合數太少了！請輸入至少 10 回合: ";
+					}
+					else {
+						break; // 輸入合法且大於等於10，跳出迴圈
+					}
 				}
 			}
+
 			else if (gameMode == 2) {
 				int initialMoney = 5000;
 				cout << ".目標制，請輸入達成勝利的目標金額 (必須大於初始金額 " << initialMoney << " 元): ";
