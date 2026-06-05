@@ -17,7 +17,7 @@ public:
 
 class LandCell : public Cell {
 public:
-	// 繼承父類別的建構子 (寫法你可以自己嘗試一下)
+	// 繼承父類別的建構子 
 	LandCell(string n, int p, int to, int sell, int h);
 
 	// 覆寫觸發事件！

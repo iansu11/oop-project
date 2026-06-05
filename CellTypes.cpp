@@ -62,6 +62,7 @@ void LandCell::triggerEvent(Player p[], int i, Map& myMap, CardManager& cardAdmi
 			cout << "目前剩餘金額: " << p[i].getMoney() << " 元" << endl;
 		}
 		else if (getHouseLevel() < 5) {
+			cout << "你目前有 " << p[i].getMoney() << " 元" << endl;
 			cout << "目前在 [" << getName() << "] ";
 			cout << "是你自己的土地，請問需要興建房屋嗎，共需要 " << getHousePrice() << " 元？(y/n): " << endl;
 			while (true) {
@@ -85,6 +86,7 @@ void LandCell::triggerEvent(Player p[], int i, Map& myMap, CardManager& cardAdmi
 		else {
 			cout << "目前在 [" << getName() << "] ";
 			cout << "是你自己的土地，房屋已達到最高等級了！!" << endl;
+			cout << "目前剩餘金額: " << p[i].getMoney() << " 元" << endl;
 		}
 	}
 	else {

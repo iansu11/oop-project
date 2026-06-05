@@ -9,23 +9,23 @@ using namespace std;
 
 Map::Map() {
 	gameMap.push_back(new StartCell("起點"));
-	gameMap.push_back(new LandCell("忠孝路", 1000, 60, 500, 600));
-	gameMap.push_back(new LandCell("仁愛路", 1000, 60, 500, 600));
-	gameMap.push_back(new LandCell("信義路", 1200, 80, 600, 720));
+	gameMap.push_back(new LandCell("忠孝路", 1000, 200, 500, 600));
+	gameMap.push_back(new LandCell("仁愛路", 1000, 200, 500, 600));
+	gameMap.push_back(new LandCell("信義路", 1200, 240, 600, 720));
 	gameMap.push_back(new JailCell("監獄"));
-	gameMap.push_back(new LandCell("民族路", 1400, 100, 700, 840));
-	gameMap.push_back(new LandCell("民權路", 1400, 100, 700, 840));
-	gameMap.push_back(new LandCell("民生路", 1600, 120, 800, 960));
+	gameMap.push_back(new LandCell("民族路", 1400, 280, 700, 840));
+	gameMap.push_back(new LandCell("民權路", 1400, 280, 700, 840));
+	gameMap.push_back(new LandCell("民生路", 1600, 320, 800, 960));
 	gameMap.push_back(new ChanceCell("機會"));
 	gameMap.push_back(new PublicLandCell("免費停車場"));
-	gameMap.push_back(new LandCell("自由路", 2200, 180, 1100, 1320));
-	gameMap.push_back(new LandCell("平等路", 2200, 180, 1100, 1320));
-	gameMap.push_back(new LandCell("博愛路", 2400, 200, 1200, 1440));
-	gameMap.push_back(new LandCell("台北車站", 2000, 250, 1000, 1200));
-	gameMap.push_back(new LandCell("中華路", 3000, 260, 1500, 1800));
+	gameMap.push_back(new LandCell("自由路", 2200, 440, 1100, 1320));
+	gameMap.push_back(new LandCell("平等路", 2200, 440, 1100, 1320));
+	gameMap.push_back(new LandCell("博愛路", 2400, 480, 1200, 1440));
+	gameMap.push_back(new LandCell("台北車站", 3500, 700, 1000, 1200));
+	gameMap.push_back(new LandCell("中華路", 3000, 600, 1500, 1800));
 	gameMap.push_back(new FateCell("命運"));
-	gameMap.push_back(new LandCell("中正路", 3000, 260, 1500, 1800));
-	gameMap.push_back(new LandCell("介壽路", 3200, 280, 1600, 1920));
+	gameMap.push_back(new LandCell("中正路", 3000, 600, 1500, 1800));
+	gameMap.push_back(new LandCell("介壽路", 3200, 640, 1600, 1920));
 }
 
 Map::~Map() {
