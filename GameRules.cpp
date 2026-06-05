@@ -78,7 +78,7 @@ void RuleManager::selectGameMode(int& gameMode, int& maxTurns, int& targetAmount
 				}
 			}
 			else if (gameMode == 3) {
-				cout << ".破產制，遊戲將持續進行直到只剩下一位玩家未破產。" << endl;
+				cout << ".破產制，遊戲將持續進行直到只剩下一位玩家未破產，或者超過20回合後選擇是否提前結束遊戲。" << endl;
 			}
 			break; // 跳出無限迴圈
 		}

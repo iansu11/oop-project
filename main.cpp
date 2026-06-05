@@ -73,9 +73,9 @@ int main() {
 			cout << "輪到玩家 P" << i << ":"<<p[i].getName() << endl;
 
 
-			//坐牢判定
+			// 坐牢判定 GameRule.cpp
 			if (ruleAdmin.jailRule(p[i], cardAdmin) == true) {
-				continue; // 裁判說要坐牢，直接跳過換下一位！
+				continue; // 坐牢，直接跳過換下一位！
 			}
 		
 
@@ -113,7 +113,7 @@ int main() {
 			// 更新玩家位置
 			p[i].setPosition(newPos);
 
-			// 進行格子判斷
+			// 進行格子判斷 GameRules.cpp
 			ruleAdmin.executeCellAction(p, i, myMap, players, cardAdmin);
 
 			int activePlayers = 0;
@@ -131,6 +131,7 @@ int main() {
 				break;
 			}
 
+			// 回合制結束遊戲判斷
 			if (gameMode == 2) {
 				if (p[i].getTotalAssets(myMap) >= targetAmount) {
 					isGameOver = true;
@@ -143,6 +144,21 @@ int main() {
 			cout << "------------------" << endl;
 		}
 		cout << endl;
+
+		// 破產制提前結束功能，從第20回合後可以自由選擇是否提前結束遊戲
+		if (gameMode == 3 && isGameOver==false && currentTurn >= 20) {
+			cout << "========================================" << endl;
+			cout << "是否要提前結束並結算？" << endl;
+			cout << "(按 [E] 結束 / 按 [Enter] 或其他鍵繼續下一回合)" << endl;
+
+			char input = _getch();
+			if (input == 'e' || input == 'E') {
+				cout << "\n玩家選擇提前結束遊戲！正在結算最高資產..." << endl;
+				gameMode = 1;      // 偽裝成回合制，交給現有的回合制結算去比資產大小
+				isGameOver = true;
+			}
+			cout << endl;
+		}
 
 		if (isGameOver) {
 			break; 
@@ -164,7 +180,7 @@ int main() {
 		cout << endl;
 	}
 
-	// 判斷並列出最終贏家
+	// 判斷並列出最終贏家 GameRules.cpp 
 	ruleAdmin.announceWinner(gameMode, p, players, myMap, winnerIndex);
 
 }
