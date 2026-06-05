@@ -7,7 +7,7 @@
 #include <string>
 using namespace std;
 
-Map::Map() {
+Map::Map() {  // 土地類型 | 土地名稱 | 土地價格 | 過路費 | 賣出價格 | 房屋價格
 	gameMap.push_back(new StartCell("起點"));
 	gameMap.push_back(new LandCell("忠孝路", 1000, 200, 500, 600));
 	gameMap.push_back(new LandCell("仁愛路", 1000, 200, 500, 600));

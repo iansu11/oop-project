@@ -93,7 +93,7 @@ void RuleManager::executeCellAction(Player p[], int i, Map& myMap, int players, 
 		// 每次進迴圈，都要去抓玩家「當下最新的位置」
 		int loopCurrentPos = p[i].getPosition();
 
-		// loopCurrentPos 去地圖上抓玩家踩到的「那一格」資料
+		// loopCurrentPos 去地圖上抓玩家踩到的「那一格」資料 Map.cpp
 		Cell* landedCell = myMap.getCell(loopCurrentPos);
 
 		// 印出結果
@@ -101,6 +101,7 @@ void RuleManager::executeCellAction(Player p[], int i, Map& myMap, int players, 
 
 		myMap.drawMap(p, players);
 
+		// 觸發格子事件，並且依照從 Cell 繼承下來的類別，進行相對應的判定執行 CellTypes.cpp
 		landedCell->triggerEvent(p, i, myMap, cardAdmin, players, loopCurrentPos);
 
 		if (p[i].getPosition() != loopCurrentPos) {
@@ -126,7 +127,7 @@ void RuleManager::announceWinner(int gameMode, Player p[], int players, Map& myM
 					maxOwner = i;
 					tieCount = 0;
 				}
-				if (p[i].getTotalAssets(myMap) == maxAssets) {
+				if (p[i].getTotalAssets(myMap) == maxAssets) { // 平手計算
 					tieCount++;
 				}
 			}

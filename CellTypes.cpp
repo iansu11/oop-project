@@ -8,7 +8,7 @@
 #include <iostream>
 using namespace std;
 
-StartCell::StartCell(string n)
+StartCell::StartCell(string n)  // 起點
 	: Cell(n, CellType::Start, 0, 0, 0, 0) {}
 
 void StartCell::triggerEvent(Player p[], int i, Map& myMap, CardManager& cardAdmin, int players, int loopCurrentPos) {
@@ -16,8 +16,8 @@ void StartCell::triggerEvent(Player p[], int i, Map& myMap, CardManager& cardAdm
 }
 
 
-LandCell::LandCell(string n, int p, int to, int sell, int h)
-	: Cell(n, CellType::Land, p, to, sell, h) {}
+LandCell::LandCell(string n, int p, int to, int sell, int h)  // 一般可購買的土地 (土地名稱 | 土地價格 | 過路費 | 賣出價格 | 房屋價格)
+	: Cell(n, CellType::Land, p, to, sell, h) {} // 初始化地圖格的基本資料
 
 void LandCell::triggerEvent(Player p[], int i, Map& myMap, CardManager& cardAdmin, int players, int loopCurrentPos) {
 	char choice;
@@ -97,7 +97,7 @@ void LandCell::triggerEvent(Player p[], int i, Map& myMap, CardManager& cardAdmi
 }
 
 
-ChanceCell::ChanceCell(string n)
+ChanceCell::ChanceCell(string n)  // 機會
 	: Cell(n, CellType::Chance, 0, 0, 0, 0) {
 }
 
@@ -114,12 +114,12 @@ void ChanceCell::triggerEvent(Player p[], int i, Map& myMap, CardManager& cardAd
 			break;
 		}
 	}
-	cardAdmin.executeChance(p[i], myMap, p, players);
+	cardAdmin.executeChance(p[i], myMap, p, players); // CardManager.cpp
 
 }
 
 
-FateCell::FateCell(string n)
+FateCell::FateCell(string n)  // 命運
 	: Cell(n, CellType::Fate, 0, 0, 0, 0) {
 }
 
@@ -136,12 +136,12 @@ void FateCell::triggerEvent(Player p[], int i, Map& myMap, CardManager& cardAdmi
 			break;
 		}
 	}
-	cardAdmin.executeFate(p[i], myMap, p, players);
+	cardAdmin.executeFate(p[i], myMap, p, players);  // CardManager.cpp
 
 }
 
 
-JailCell::JailCell(string n)
+JailCell::JailCell(string n)  // 監獄
 	: Cell(n, CellType::Jail, 0, 0, 0, 0) {}
 
 void JailCell::triggerEvent(Player p[], int i, Map& myMap, CardManager& cardAdmin, int players, int loopCurrentPos) {
@@ -150,7 +150,7 @@ void JailCell::triggerEvent(Player p[], int i, Map& myMap, CardManager& cardAdmi
 }
 
 
-PublicLandCell::PublicLandCell(string n)
+PublicLandCell::PublicLandCell(string n)  // 公共土地(免費停車場)
 	: Cell(n, CellType::PublicLand, 0, 0, 0, 0) {
 }
 

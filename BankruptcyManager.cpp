@@ -8,7 +8,7 @@ void BankruptcyManager::checkBankruptcy(Player& currentPlayer, Map& myMap) {
 
 		if (currentPlayer.getOwnedLandCount() > 0) {
 			cout << "請選擇要賣的土地來還債 (輸入土地編號): " << endl;
-			currentPlayer.printSellLands(myMap);
+			currentPlayer.printSellLands(myMap);  // Player.cpp
 			int landChoice;
 			while (true) {
 

@@ -7,7 +7,7 @@ class Player;
 class Map;
 class CardManager;
 
-enum class CellType {
+enum class CellType { // 列舉定義格子的種類
 	Start,
 	Land,
 	Chance,
