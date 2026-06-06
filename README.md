@@ -33,7 +33,24 @@
    
 
 ## 運行畫面截圖
+## ● 開始畫面
+  <img width="1195" height="373" alt="開始畫面-2" src="https://github.com/user-attachments/assets/e5ca2566-c40e-4673-995f-c8a4c23f7777" />
 
+## ● 購買土地
+   <img width="635" height="134" alt="購買土地-2" src="https://github.com/user-attachments/assets/f8fd85f0-6cff-4690-9303-a213698c24f9" />
+
+## ● 收過路費/破產機制
+   <img width="783" height="353" alt="過路費破產-2" src="https://github.com/user-attachments/assets/d86e223a-2c4d-43f7-aca1-3779418f3dad" />
+
+## ● 興建房屋
+   <img width="935" height="121" alt="興建房屋內容-2" src="https://github.com/user-attachments/assets/219eb13c-71fa-48e4-9ada-b0ebf1623e89" />
+   
+## ● 抽取機會/命運
+   <img width="410" height="151" alt="機會-2" src="https://github.com/user-attachments/assets/8fcd7046-ca25-45ca-9d69-5faa5bb02bc4" />
+   <img width="365" height="150" alt="命運-2" src="https://github.com/user-attachments/assets/01de75b3-79f2-4ff9-940f-a008d88b228a" />
+
+## ● 遊戲結束畫面
+   <img width="599" height="712" alt="結束畫面-2" src="https://github.com/user-attachments/assets/a687a463-03e4-4b02-ac74-e44949c76dbd" />
 
 ## 分工資訊
 
