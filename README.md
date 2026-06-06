@@ -31,7 +31,7 @@
 
 1. 進入github點選右上角綠色的code，列表出來後點選下方的DownLoad ZIP
  
-   <img width="602" height="523" alt="安裝1" src="https://github.com/user-attachments/assets/8af5669d-7d36-4412-bbe6-5102e317029e" />
+   <img width="575" alt="安裝1" src="https://github.com/user-attachments/assets/8af5669d-7d36-4412-bbe6-5102e317029e" />
    
 2. 下載完壓縮檔案，按右鍵選取解壓縮全部
 
@@ -43,11 +43,11 @@
 
 4. 選擇檔案的資料夾
 
-   <img width="776" height="421" alt="安裝4" src="https://github.com/user-attachments/assets/00bd0e7e-d093-4a58-ac24-4b3f37b9203b" />
+   <img width="700" alt="安裝4" src="https://github.com/user-attachments/assets/00bd0e7e-d093-4a58-ac24-4b3f37b9203b" />
 
 5. 選取CMakeList.txt檔
 
-   <img width="981" height="763" alt="安裝5" src="https://github.com/user-attachments/assets/de0c39c4-170f-4df8-af28-0367de04bf13" />
+   <img width="750" alt="安裝5" src="https://github.com/user-attachments/assets/de0c39c4-170f-4df8-af28-0367de04bf13" />
 
 6. 按下 Visual Studio的執行按鍵
    
