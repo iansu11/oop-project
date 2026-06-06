@@ -30,6 +30,7 @@
 ## 程式如何安裝執行
 1. 
 2. 
+
 ## UML圖
    <img width="785" height="465" alt="UML大綱架構" src="https://github.com/user-attachments/assets/c23ebd42-2e48-4020-b8e5-cb0ac0e42ef8" />
    
@@ -70,4 +71,6 @@
    <img width="599" height="712" alt="結束畫面-2" src="https://github.com/user-attachments/assets/a687a463-03e4-4b02-ac74-e44949c76dbd" />
 
 ## 分工資訊
-
+   **蘇詠翔:** 主要程式碼、簡報製作
+   **呂宇恩:** html javascript 介面製作、簡報協作、程式碼協助測試除錯
+   **鍾奕萱:** 簡報協作、程式碼協助測試除錯
