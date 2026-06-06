@@ -30,7 +30,24 @@
 ## 程式如何安裝執行
 1. 
 2. 
+## UML圖
+   <img width="785" height="465" alt="UML大綱架構" src="https://github.com/user-attachments/assets/c23ebd42-2e48-4020-b8e5-cb0ac0e42ef8" />
    
+
+   <img width="286" height="181" alt="螢幕擷取畫面 2026-06-06 104104" src="https://github.com/user-attachments/assets/cedb6ecf-aa70-4829-89b2-e0b3ba324531" />
+   <img width="204" height="299" alt="螢幕擷取畫面 2026-06-06 104024" src="https://github.com/user-attachments/assets/cf5d550c-9764-4285-b375-36629a6b7ecd" />
+   <img width="677" height="151" alt="螢幕擷取畫面 2026-06-06 103003" src="https://github.com/user-attachments/assets/f9ad2299-6152-438e-baaf-f54d209d6ed3" />
+   <img width="681" height="142" alt="螢幕擷取畫面 2026-06-06 104149" src="https://github.com/user-attachments/assets/e00944da-a801-4bc0-8bc2-c65e750df238" />
+   <img width="682" height="213" alt="螢幕擷取畫面 2026-06-06 104445" src="https://github.com/user-attachments/assets/101b3ddb-f959-4698-b1cf-955d1334e12a" />
+   <img width="587" height="333" alt="螢幕擷取畫面 2026-06-06 104527" src="https://github.com/user-attachments/assets/532cf28c-f955-4979-afb2-eff09735dc93" />
+   <img width="366" height="640" alt="螢幕擷取畫面 2026-06-06 104643" src="https://github.com/user-attachments/assets/050f3b5a-622c-4504-bd7a-b0fbed043f6e" />
+   <img width="682" height="400" alt="螢幕擷取畫面 2026-06-06 104857" src="https://github.com/user-attachments/assets/fe7a3b2b-802d-4312-833b-3dd509ec21b5" />
+   <img width="783" height="124" alt="螢幕擷取畫面 2026-06-06 104956" src="https://github.com/user-attachments/assets/c2f21002-e034-4769-a490-899ae813338f" />
+   <img width="782" height="114" alt="螢幕擷取畫面 2026-06-06 105241" src="https://github.com/user-attachments/assets/961c60be-238b-4f66-b474-1f41047fdec7" />
+   <img width="773" height="112" alt="螢幕擷取畫面 2026-06-06 105045" src="https://github.com/user-attachments/assets/b4780bdb-b983-4a06-9520-91e62cf70beb" />
+   <img width="781" height="112" alt="螢幕擷取畫面 2026-06-06 105107" src="https://github.com/user-attachments/assets/04f0eef9-ff8c-4c6e-a729-900bbacffa96" />
+   <img width="775" height="110" alt="螢幕擷取畫面 2026-06-06 105128" src="https://github.com/user-attachments/assets/0ec582aa-843f-4c29-9aa9-dae37484cd4b" />
+   <img width="773" height="109" alt="螢幕擷取畫面 2026-06-06 105149" src="https://github.com/user-attachments/assets/0add3c79-1d7b-43e0-ba58-fb166e5349ae" />
 
 ## 運行畫面截圖
 ## ● 開始畫面
