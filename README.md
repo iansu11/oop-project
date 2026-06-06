@@ -28,12 +28,37 @@
 6. 遊戲會自動進行資產計算與回合推進，當觸發遊戲模式的勝利條件時，遊戲結束並公佈最終贏家及總資產排名。
 
 ## 程式如何安裝執行
-1. 
-2. 
+
+1. 進入github點選右上角綠色的code，列表出來後點選下方的DownLoad ZIP
+ 
+   <img width="602" height="523" alt="安裝1" src="https://github.com/user-attachments/assets/8af5669d-7d36-4412-bbe6-5102e317029e" />
+   
+2. 下載完壓縮檔案，按右鍵選取解壓縮全部
+
+   <img width="400" height="174" alt="安裝2" src="https://github.com/user-attachments/assets/29e24489-1089-44a0-998a-17b187f7cfae" />
+   
+3. 開啟 Visual Studio，點選右側開啟資料夾
+
+   <img width="223" height="155" alt="安裝3" src="https://github.com/user-attachments/assets/27b1dd81-2d04-4579-8573-1dd3a4905fa4" />
+
+4. 選擇檔案的資料夾
+
+   <img width="776" height="421" alt="安裝4" src="https://github.com/user-attachments/assets/00bd0e7e-d093-4a58-ac24-4b3f37b9203b" />
+
+5. 選取CMakeList.txt檔
+
+   <img width="981" height="763" alt="安裝5" src="https://github.com/user-attachments/assets/de0c39c4-170f-4df8-af28-0367de04bf13" />
+
+6. 按下 Visual Studio的執行按鍵
+   
+    <img width="431" height="100" alt="安裝6" src="https://github.com/user-attachments/assets/b9c7822c-9697-44fb-b0d0-0d43625e8a47" />
+
+7. 可以開始執行
+
+   <img width="733" height="266" alt="安裝7" src="https://github.com/user-attachments/assets/cd18ec24-3ce0-4329-b066-1bcb557b0550" />
 
 ## UML圖
    <img width="785" height="465" alt="UML大綱架構" src="https://github.com/user-attachments/assets/c23ebd42-2e48-4020-b8e5-cb0ac0e42ef8" />
-   
 
    <img width="286" height="181" alt="螢幕擷取畫面 2026-06-06 104104" src="https://github.com/user-attachments/assets/cedb6ecf-aa70-4829-89b2-e0b3ba324531" />
    <img width="204" height="299" alt="螢幕擷取畫面 2026-06-06 104024" src="https://github.com/user-attachments/assets/cf5d550c-9764-4285-b375-36629a6b7ecd" />
