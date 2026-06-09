@@ -96,7 +96,7 @@
    <img width="599" height="712" alt="結束畫面-2" src="https://github.com/user-attachments/assets/a687a463-03e4-4b02-ac74-e44949c76dbd" />
    
 ## 操作影片連結
-   https://drive.google.com/drive/u/1/home
+   https://drive.google.com/file/d/14FV24CUXP-9ohb7icpozBK-9j96Tgxwt/view?usp=sharing
 
 ## 分工資訊
    - **蘇詠翔:** 主要程式碼、簡報製作。
